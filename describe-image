@@ -17,7 +17,7 @@ function getGoogleImageDescription() {
     const url = `https://www.google.com/searchbyimage?hl=en&image_url=${encodeURIComponent(image_url)}`;
     await page.goto(url);
     await page.waitForLoadState("domcontentloaded");
-    let description = await page.evaluate(getGoogleImageDescription);
+    const description = await page.evaluate(getGoogleImageDescription);
     console.log(description);
     await browser.close();
 })();
