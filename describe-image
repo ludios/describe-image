@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+const playwright = require('playwright');
+
+function getGoogleImageDescription() {
+    let s = document.body.innerHTML.match(/Possible related search:.*?<\/a>/)[0];
+    let dom = new DOMParser().parseFromString(s, "text/html");
+    let description = dom.body.firstChild.nextSibling.innerText;
+    return description;
+}
+
+(async () => {
+    const image_url = process.argv[2];
+    const browser = await playwright.chromium.launch();
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    const url = `https://www.google.com/searchbyimage?hl=en&image_url=${encodeURIComponent(image_url)}`;
+    await page.goto(url);
+    await page.waitForLoadState("domcontentloaded");
+    let description = await page.evaluate(getGoogleImageDescription);
+    console.log(description);
+    await browser.close();
+})();

@@ -1,9 +1,9 @@
 {
-  "name": "learn-playwright",
+  "name": "describe-image",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Ivan Kozik <ivan@ludios.org>",
   "dependencies": {
-    "playwright": "^1.3.0"
+    "playwright": "^1.4.0"
   }
 }
