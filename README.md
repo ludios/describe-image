@@ -9,8 +9,7 @@ it to stdout.
 
 1. Install node 12 or 14
 2. Install yarn
-3.
-    ```
+3.  ```
     git clone https://github.com/ludios/describe-image
     cd describe-image
     yarn install
